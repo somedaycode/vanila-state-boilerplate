@@ -1,4 +1,4 @@
-export default class Component<T = void, S = void> {
+export default class Component<T = void, S = unknown> {
   public $target: HTMLElement;
   public props: T;
   public state: S | null; // 추후 조정
@@ -19,7 +19,7 @@ export default class Component<T = void, S = void> {
   setup() {}
 
   template() {
-    return "";
+    return '';
   }
 
   mounted() {}
@@ -27,7 +27,6 @@ export default class Component<T = void, S = void> {
   render() {
     this.$target.innerHTML = this.template();
     this.mounted();
-    this.setEvent();
   }
 
   setEvent() {}
