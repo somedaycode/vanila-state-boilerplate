@@ -1,12 +1,18 @@
-import Component from "@src/core/Component";
+import Router from '@src/lib/Router';
+import Component from '@src/core/Component';
 
-export default class App extends Component<unknown> {
-  setup() {
-    this.state = {};
-  }
-  template() {
-    return "<main>somedaycode's vanila-state-boilerplate</main>";
-  }
+import Home from './components/Home';
+import SecondPage from './components/SecondPage';
 
-  setEvent() {}
+const routerPath = {
+  '/': Home,
+  '/second': SecondPage
+};
+export const router = new Router(routerPath);
+export default class App extends Component {
+  setup() {}
+
+  mounted() {
+    router.init(this.$target);
+  }
 }
