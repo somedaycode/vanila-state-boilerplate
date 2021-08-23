@@ -5,16 +5,16 @@ export default class Router {
 
   init(el) {
     this.renderHTML(el, this.routes['/']);
-    window.onpopstate = e =>
-      this.renderHTML(el, routes[window.location.pathname]);
+    window.addEventListener('popstate', () =>
+      this.renderHTML(el, this.routes[location.pathname])
+    );
   }
 
   push(el, pathName) {
     window.onpopstate = e => {
-      return this.renderHTML(el, routes[window.location.pathname]);
+      return this.renderHTML(el, this.routes[location.pathname]);
     };
-    window.history.pushState({}, pathName, window.location.origin + pathName);
-    console.log(this.routes);
+    window.history.pushState({}, pathName, location.origin + pathName);
     this.renderHTML(el, this.routes[pathName]);
   }
 
