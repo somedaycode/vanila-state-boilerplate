@@ -1,9 +1,10 @@
-import "./index.scss";
+import './index.scss';
 
-import App from "@src/App";
+import App from '@src/App';
 
 function init() {
-  new App(document.querySelector("#root") as HTMLElement);
+  const root = document.querySelector('#root') as HTMLElement;
+  new App(root);
 }
 
 init();
