@@ -1,12 +1,13 @@
 export default class Component<T = void, S = unknown> {
   public $target: HTMLElement;
   public props: T;
-  public state: S | null; // 추후 조정
+  public state?: S;
+  public keys: string[];
 
-  constructor($target: HTMLElement, props: T, state = null) {
+  constructor($target: HTMLElement, props: T) {
     this.$target = $target;
     this.props = props;
-    this.state = state;
+    this.keys = [];
     this.init();
   }
 
@@ -24,8 +25,16 @@ export default class Component<T = void, S = unknown> {
 
   mounted() {}
 
+  mountChildComponent() {}
+
+  subscribe() {
+    // observer.ts 사용시 추가
+    // this.keys.forEach(key => subscribe(key, this.render.bind(this)));
+  }
+
   render() {
     this.$target.innerHTML = this.template();
+    this.mountChildComponent();
     this.mounted();
   }
 
